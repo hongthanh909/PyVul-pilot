@@ -1,0 +1,39 @@
+# Local Python environments and caches
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# IDE and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local secrets and machine-specific configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Large generated training/evaluation artifacts
+outputs/
+*.ckpt
+*.onnx
+*.safetensors
+
+# Each batch's merge preview repeats the full combined dataset.
+# The final combined pilot dataset is kept in data/model-dataset/.
+data/supplement/**/merge-preview/
+data/supplement/**/cache/
+data/recovery/cache/
+
+# Broad upstream/reference exports are kept locally, but are not needed for
+# reviewing this pilot and may contain security-advisory example credentials.
+benchmark_curation/data_collection/github_advisories.json
+dataset/function_level_dataset.out
+data/processed/rejected.jsonl
+data/processed-with-path/rejected.jsonl

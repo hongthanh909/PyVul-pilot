@@ -1,0 +1,5 @@
+﻿metric,value
+advisories_found,18
+unique_fix_commits,10
+NEEDS_FIX_COMMIT,10
+READY_FOR_EXTRACTION,8

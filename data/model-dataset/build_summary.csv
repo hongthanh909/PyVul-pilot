@@ -1,0 +1,15 @@
+﻿metric,value
+model_samples,443
+unique_parent_functions,206
+unique_parent_module_blocks,1
+unique_parent_units,207
+unique_groups,207
+duplicates_removed,3
+label_conflicts_removed,6
+invalid_removed,0
+samples_CWE-22,128
+samples_CWE-287,49
+samples_CWE-78,52
+samples_CWE-79,162
+samples_CWE-798,6
+samples_CWE-89,46

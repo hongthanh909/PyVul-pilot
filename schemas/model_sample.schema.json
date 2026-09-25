@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/pyvul/model_sample.schema.json",
+  "title": "Canonical CodeBERT model sample",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "model_schema_version",
+    "model_sample_id",
+    "parent_sample_id",
+    "group_id",
+    "source_dataset",
+    "source_type",
+    "repository",
+    "commit_id",
+    "file_path",
+    "function_name",
+    "code",
+    "variant",
+    "is_vulnerable",
+    "cwes",
+    "labels",
+    "token_count",
+    "tokenizer"
+  ],
+  "properties": {
+    "model_schema_version": { "const": "1.0" },
+    "model_sample_id": { "type": "string", "minLength": 1 },
+    "parent_sample_id": { "type": "string", "minLength": 1 },
+    "group_id": { "type": "string", "minLength": 1 },
+    "source_dataset": { "type": "string", "minLength": 1 },
+    "source_type": { "enum": ["full_function", "long_chunk", "module_block"] },
+    "unit_type": { "enum": ["function", "module_block"], "default": "function" },
+    "repository": { "type": "string", "minLength": 1 },
+    "commit_id": { "type": "string", "minLength": 7 },
+    "commit_url": { "type": ["string", "null"] },
+    "file_path": { "type": "string", "pattern": "\\.py$" },
+    "function_name": { "type": "string", "minLength": 1 },
+    "start_line_before": { "type": ["integer", "null"], "minimum": 1 },
+    "end_line_before": { "type": ["integer", "null"], "minimum": 1 },
+    "start_line_after": { "type": ["integer", "null"], "minimum": 1 },
+    "end_line_after": { "type": ["integer", "null"], "minimum": 1 },
+    "start_line": { "type": ["integer", "null"], "minimum": 1 },
+    "end_line": { "type": ["integer", "null"], "minimum": 1 },
+    "code": { "type": "string", "minLength": 1 },
+    "variant": { "enum": ["before", "after"] },
+    "is_vulnerable": { "type": "boolean" },
+    "cwes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": ["CWE-22", "CWE-78", "CWE-79", "CWE-89", "CWE-287", "CWE-798"]
+      }
+    },
+    "advisory_cwes": {
+      "type": ["array", "null"],
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^CWE-[0-9]+$" }
+    },
+    "cwe_isolation_evidence": { "type": ["string", "null"] },
+    "labels": { "type": "array", "minItems": 1, "uniqueItems": true },
+    "token_count": { "type": "integer", "minimum": 1, "maximum": 512 },
+    "tokenizer": { "type": "string", "minLength": 1 },
+    "code_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "platform": { "type": ["string", "null"] },
+    "vulnerability_scope": { "type": ["string", "null"] },
+    "domain": { "type": ["string", "null"] },
+    "curation_status": { "type": ["string", "null"] },
+    "curation_notes": { "type": ["string", "null"] }
+  }
+}

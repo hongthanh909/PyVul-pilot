@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/pyvul/function_pair.schema.json",
+  "title": "Normalized vulnerable/fixed Python source-unit pair",
+  "description": "Canonical, pre-chunk representation for function pairs and curated CWE-798 module blocks. Missing unit_type means function for older records.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "sample_id",
+    "source_dataset",
+    "source_dataset_url",
+    "source_record_id",
+    "repository",
+    "commit_id",
+    "commit_url",
+    "file_path",
+    "function_name",
+    "language",
+    "cwes",
+    "code_before",
+    "code_after"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "sample_id": { "type": "string", "minLength": 1 },
+    "source_dataset": { "type": "string", "minLength": 1 },
+    "source_dataset_url": { "type": "string", "format": "uri" },
+    "source_license": { "type": ["string", "null"] },
+    "source_record_id": { "type": "string", "minLength": 1 },
+    "advisory_ids": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "advisory_url": { "type": ["string", "null"], "format": "uri" },
+    "repository": {
+      "type": "string",
+      "pattern": "^[^/\\s]+/[^/\\s]+$"
+    },
+    "commit_id": { "type": "string", "pattern": "^[0-9a-fA-F]{7,64}$" },
+    "commit_url": {
+      "type": "string",
+      "pattern": "^https://github\\.com/[^/]+/[^/]+/commit/[0-9a-fA-F]{7,64}(?:[/?#].*)?$"
+    },
+    "file_path": { "type": "string", "pattern": "\\.py$" },
+    "function_name": { "type": "string", "minLength": 1 },
+    "unit_type": { "enum": ["function", "module_block"], "default": "function" },
+    "start_line_before": { "type": "integer", "minimum": 1 },
+    "end_line_before": { "type": "integer", "minimum": 1 },
+    "start_line_after": { "type": "integer", "minimum": 1 },
+    "end_line_after": { "type": "integer", "minimum": 1 },
+    "source_spans_before": { "type": "array", "items": { "$ref": "#/$defs/source_span" } },
+    "source_spans_after": { "type": "array", "items": { "$ref": "#/$defs/source_span" } },
+    "language": { "const": "Python" },
+    "cwes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": ["CWE-22", "CWE-78", "CWE-79", "CWE-89", "CWE-287", "CWE-798"]
+      }
+    },
+    "advisory_cwes": {
+      "description": "All CWEs listed by the advisory; cwes is the isolated training label.",
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^CWE-[0-9]+$" }
+    },
+    "cwe_isolation_evidence": { "type": ["string", "null"] },
+    "labels": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "PATH_TRAVERSAL",
+          "COMMAND_INJECTION",
+          "XSS",
+          "SQL_INJECTION",
+          "INSECURE_AUTHENTICATION",
+          "HARDCODED_CREDENTIALS"
+        ]
+      }
+    },
+    "code_before": { "type": "string", "minLength": 1 },
+    "code_after": { "type": "string", "minLength": 1 },
+    "commit_message": { "type": ["string", "null"] },
+    "description": { "type": ["string", "null"] },
+    "extraction_method": { "type": "string", "minLength": 1 }
+  },
+  "$defs": {
+    "source_span": {
+      "type": "object",
+      "required": ["start_line", "end_line"],
+      "properties": {
+        "start_line": { "type": "integer", "minimum": 1 },
+        "end_line": { "type": "integer", "minimum": 1 }
+      }
+    }
+  }
+}

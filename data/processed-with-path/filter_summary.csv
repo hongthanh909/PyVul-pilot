@@ -1,0 +1,7 @@
+﻿cwe,label,owasp_2025,total_raw,python_samples,accepted,manual_review,rejected,unique_repositories,unique_commits,vulnerable_fixed_pairs,duplicates,over_token_limit
+CWE-22,PATH_TRAVERSAL,A01,104,101,41,46,17,32,53,99,14,41
+CWE-78,COMMAND_INJECTION,A05,37,37,11,24,2,18,22,35,2,21
+CWE-79,XSS,A05,161,119,49,62,50,53,92,151,14,61
+CWE-89,SQL_INJECTION,A05,52,52,15,17,20,7,30,47,20,12
+CWE-287,INSECURE_AUTHENTICATION,A07,38,38,11,21,6,11,20,38,6,16
+CWE-798,HARDCODED_CREDENTIALS,A07,0,0,0,0,0,0,0,0,0,0

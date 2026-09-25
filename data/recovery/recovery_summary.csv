@@ -1,0 +1,11 @@
+﻿metric,value
+ambiguous_equal_score,3
+cached_commits,200
+download_or_parse_failures,1
+input_rows,2173
+missing_before_or_after_change_match,55
+resolved_groups,188
+selected_commits,201
+selected_groups,248
+resolved_output_rows,188
+unresolved_output_rows,60

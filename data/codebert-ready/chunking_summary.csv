@@ -1,0 +1,11 @@
+﻿cwe,input_manual_samples,eligible_long_only_functions,functions_within_limit,long_functions,chunked_model_ready_functions,chunks_created,training_chunks,non_patch_chunks,remaining_manual_review,max_chunk_token_count
+CWE-22,46,28,0,28,21,109,52,57,25,512
+CWE-23,6,0,0,0,0,0,0,0,6,0
+CWE-36,1,0,0,0,0,0,0,0,1,0
+CWE-77,10,0,0,0,0,0,0,0,10,0
+CWE-78,24,10,0,10,5,35,19,16,19,512
+CWE-79,62,29,0,29,22,112,59,53,40,512
+CWE-89,17,3,0,3,3,12,8,4,14,512
+CWE-287,21,11,0,11,6,44,20,24,15,509
+CWE-502,1,0,0,0,0,0,0,0,1,0
+TOTAL,187,81,0,81,57,312,158,154,130,512
